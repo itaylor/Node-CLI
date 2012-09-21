@@ -103,7 +103,7 @@ function NodeCli () {
 	
 	//Output string @ current x/y
 	this.write = function(string) {
-		process.stdout.print(string);
+		process.stdout.write(string);
 		return(this);
 	};
 
@@ -163,7 +163,7 @@ function NodeCli () {
 module.exports = new NodeCli();
 
 //Reset console when program exits
-process.on('exit', module.exports.reset);
+process.on('exit', module.exports.reset.bind(module.exports));
 
 //cli.clear().move(38, 5).write('Node.js').down(1).back(7).write('Rocks!');
 module.exports.clear().move(20,20).color('red', true).write('Node.js').down(1).back(7).color('yellow', 'default', 'underscore').write('Rocks!').resetStyle().down(10);
